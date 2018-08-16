@@ -24,16 +24,22 @@ class ViewController: UIViewController {
         else if welcomeLabel.text == "Button Press Again" {
             welcomeLabel.text = "Stop"
         }
+        else if welcomeLabel.text?.range(of:"Answer") != nil {
+            welcomeLabel.text = "Jason's App"
+        }
     }
-    @IBAction func changesTap(_ sender: Any) {
+    
+    @IBOutlet weak var textTop: UITextField!
+    
+    @IBOutlet weak var textBottom: UITextField!
+    
+    @IBAction func changesButton(_ sender: Any) {
+        print(textTop.text!)
+        print(textBottom.text!)
         
-        if self.view.backgroundColor == UIColor.gray {
-            self.view.backgroundColor = UIColor.cyan
-        }
-        else if self.view.backgroundColor == UIColor.cyan {
-            self.view.backgroundColor = UIColor.gray
-        }
+        welcomeLabel.text = "Answer is: \(Double(textTop.text!)! + Double(textBottom.text!)!)"
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
